@@ -1548,7 +1548,10 @@
 
         <!-- Product Information & Specifications -->
         <div>
-          <div class="modal-breadcrumbs" id="modalBreadcrumbs">Home / Category</div>
+          <div class="modal-breadcrumbs" id="modalBreadcrumbs">
+            <a href="#" onclick="closePDP(); filterByCategory('ALL'); return false;">Home</a> / 
+            <a href="#" id="modalCategoryLink" onclick="onPdpCategoryClick(); return false;" style="color:var(--amber); font-weight:600; text-decoration:underline;">Category</a>
+          </div>
           <h2 class="modal-title" id="modalTitle">Product Title</h2>
           
           <div class="pdp-ratings-bar">
@@ -1775,8 +1778,8 @@
     }
 
     /**
-     * Exact Sourced Real Product Photography Dataset
-     * URLs configured to open live Amazon India product listings without 404 errors.
+     * Sourced Real Product Photography & Verified Amazon Listing Links
+     * Directly mapped with links from the listing sheet.
      */
     let INARI_PRODUCTS = [
       {
@@ -1789,7 +1792,7 @@
         tag: "Best Seller",
         rating: 4.4,
         reviewsCount: 382,
-        amazonUrl: "https://www.amazon.in/s?k=stainless+steel+garlic+press+crusher",
+        amazonUrl: "https://www.amazon.in/dp/B0HPSVNTP7",
         images: [
           "https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?auto=format&fit=crop&w=700&q=80",
           "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80",
@@ -1813,7 +1816,7 @@
         tag: "Customer Choice",
         rating: 4.3,
         reviewsCount: 247,
-        amazonUrl: "https://www.amazon.in/s?k=silicone+dishwashing+scrubbing+gloves",
+        amazonUrl: "https://www.amazon.in/dp/B0HPS6KF8J",
         images: [
           "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=700&q=80",
           "https://images.unsplash.com/photo-1585421514738-01798e348b17?auto=format&fit=crop&w=700&q=80",
@@ -1837,7 +1840,7 @@
         tag: "Limited Time Deal",
         rating: 4.2,
         reviewsCount: 195,
-        amazonUrl: "https://www.amazon.in/s?k=360+faucet+aerator+spray+head",
+        amazonUrl: "https://www.amazon.in/dp/B0HPSVNTQ8",
         images: [
           "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80",
           "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80",
@@ -1861,7 +1864,7 @@
         tag: "Best Seller",
         rating: 4.5,
         reviewsCount: 512,
-        amazonUrl: "https://www.amazon.in/s?k=silicone+stretch+lids+set+of+6",
+        amazonUrl: "https://www.amazon.in/dp/B0HPS6KF9K",
         images: [
           "https://images.unsplash.com/photo-1532634922-8fe0b757fb13?auto=format&fit=crop&w=700&q=80",
           "https://images.unsplash.com/photo-1610725664285-7c57e6eeac3f?auto=format&fit=crop&w=700&q=80",
@@ -1885,7 +1888,7 @@
         tag: "New Arrival",
         rating: 4.3,
         reviewsCount: 168,
-        amazonUrl: "https://www.amazon.in/s?k=24+grid+wardrobe+storage+organizer",
+        amazonUrl: "https://www.amazon.in/dp/B0HPSVNTL2",
         images: [
           "https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&w=700&q=80",
           "https://images.unsplash.com/photo-1558997519-83ea9252def8?auto=format&fit=crop&w=700&q=80",
@@ -1909,7 +1912,7 @@
         tag: "Best Seller",
         rating: 4.4,
         reviewsCount: 420,
-        amazonUrl: "https://www.amazon.in/s?k=anti+slip+eva+shelf+mat+roll",
+        amazonUrl: "https://www.amazon.in/dp/B0HPS6KF5M",
         images: [
           "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80",
           "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=700&q=80",
@@ -1933,7 +1936,7 @@
         tag: "Limited Time Deal",
         rating: 4.1,
         reviewsCount: 310,
-        amazonUrl: "https://www.amazon.in/s?k=portable+usb+juicer+blender+bottle",
+        amazonUrl: "https://www.amazon.in/dp/B0HPSVNTR4",
         images: [
           "https://images.unsplash.com/photo-1570222094114-d054a817e56b?auto=format&fit=crop&w=700&q=80",
           "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=700&q=80",
@@ -1957,7 +1960,7 @@
         tag: "Customer Choice",
         rating: 4.4,
         reviewsCount: 285,
-        amazonUrl: "https://www.amazon.in/s?k=stainless+steel+adhesive+wall+hooks",
+        amazonUrl: "https://www.amazon.in/dp/B0HPS6KF3D",
         images: [
           "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80",
           "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=80",
@@ -1981,7 +1984,7 @@
         tag: "New Arrival",
         rating: 4.5,
         reviewsCount: 220,
-        amazonUrl: "https://www.amazon.in/s?k=jade+roller+and+gua+sha+set",
+        amazonUrl: "https://www.amazon.in/dp/B0HPSVNTP3",
         images: [
           "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=700&q=80",
           "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=700&q=80",
@@ -2005,7 +2008,7 @@
         tag: "Customer Choice",
         rating: 4.2,
         reviewsCount: 178,
-        amazonUrl: "https://www.amazon.in/s?k=car+mobile+holder+dashboard+windshield",
+        amazonUrl: "https://www.amazon.in/dp/B0HPS6KF1A",
         images: [
           "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?auto=format&fit=crop&w=700&q=80",
           "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=80",
@@ -2029,7 +2032,7 @@
         tag: "Best Seller",
         rating: 4.5,
         reviewsCount: 394,
-        amazonUrl: "https://www.amazon.in/s?k=anti+skid+yoga+mat+with+strap",
+        amazonUrl: "https://www.amazon.in/dp/B0HPSVNTN7",
         images: [
           "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?auto=format&fit=crop&w=700&q=80",
           "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=700&q=80",
@@ -2053,7 +2056,7 @@
         tag: "New Arrival",
         rating: 4.4,
         reviewsCount: 156,
-        amazonUrl: "https://www.amazon.in/s?k=wooden+montessori+geometric+puzzle",
+        amazonUrl: "https://www.amazon.in/dp/B0HPS6KF7C",
         images: [
           "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=700&q=80",
           "https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=700&q=80",
@@ -2077,7 +2080,7 @@
         tag: "Best Seller",
         rating: 4.4,
         reviewsCount: 462,
-        amazonUrl: "https://www.amazon.in/s?k=glass+oil+dispenser+auto+flip+cap",
+        amazonUrl: "https://www.amazon.in/dp/B0HPSVNTM8",
         images: [
           "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=700&q=80",
           "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=700&q=80",
@@ -2101,7 +2104,7 @@
         tag: "Limited Time Deal",
         rating: 4.3,
         reviewsCount: 310,
-        amazonUrl: "https://www.amazon.in/s?k=nano+magic+double+sided+tape",
+        amazonUrl: "https://www.amazon.in/dp/B0HPS6KF2G",
         images: [
           "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=80",
           "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80",
@@ -2125,7 +2128,7 @@
         tag: "Customer Choice",
         rating: 4.5,
         reviewsCount: 230,
-        amazonUrl: "https://www.amazon.in/s?k=travel+makeup+toiletry+case+organizer",
+        amazonUrl: "https://www.amazon.in/dp/B0HPSVNTP9",
         images: [
           "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=700&q=80",
           "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=700&q=80",
@@ -2149,7 +2152,7 @@
         tag: "Best Seller",
         rating: 4.4,
         reviewsCount: 380,
-        amazonUrl: "https://www.amazon.in/s?k=aluminum+foldable+mobile+tablet+stand",
+        amazonUrl: "https://www.amazon.in/dp/B0HPS6KF4L",
         images: [
           "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=700&q=80",
           "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=700&q=80",
@@ -2491,7 +2494,12 @@
       const fallback = getFallbackSvgUrl(p.category, p.title);
 
       document.getElementById("modalTitle").textContent = p.title;
-      document.getElementById("modalBreadcrumbs").textContent = `Home / ${p.category}`;
+      
+      // Setup breadcrumb category link
+      const catLink = document.getElementById("modalCategoryLink");
+      if (catLink) {
+        catLink.textContent = p.category;
+      }
       document.getElementById("modalSellingPrice").textContent = `₹${p.sp}`;
       document.getElementById("modalMRP").textContent = `M.R.P.: ₹${p.mrp}`;
       document.getElementById("modalDiscountPill").textContent = `${discountPct}% OFF`;
@@ -2577,6 +2585,18 @@
       modal.classList.add("active");
       modal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
+    }
+
+    function onPdpCategoryClick() {
+      if (activePDPProduct) {
+        const cat = activePDPProduct.category;
+        closePDP();
+        filterByCategory(cat);
+        const catSection = document.getElementById("catalog");
+        if (catSection) {
+          catSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     }
 
     function closePDP() {
