@@ -1687,21 +1687,11 @@
   <!-- Script Architecture -->
   <script>
     /**
-     * Amazon Link Resolver: Solves the "Looking for something?" 404 Error
-     * 
-     * Why Amazon shows:
-     * "Looking for something? We're sorry. The Web address you entered is not a functioning page on our site."
-     * 
-     * Reason: ASINs like 'B0HPSVNTP7' in newly generated Amazon seller draft sheets
-     * are NOT yet indexed or active on public Amazon.in servers. Direct /dp/ links for non-live ASINs
-     * immediately return Amazon's 404 dog error page.
-     * 
-     * Resolution:
-     * When linkMode is 'safe' (default), we construct a clean Amazon.in search query with the product title.
-     * This ALWAYS returns an active, live shopping page on Amazon.in with zero broken pages.
-     * If the owner switches linkMode to 'direct', it will use the direct /dp/ ASIN link once the listings are published.
+     * Amazon Link Resolver
+     * Direct mode uses each product's supplied Amazon PDP URL. Search mode remains
+     * available as a manual fallback.
      */
-    let amazonLinkMode = localStorage.getItem("inari_link_mode") || "safe"; // 'safe' (search fallback) or 'direct' (/dp/ link)
+    let amazonLinkMode = "direct"; // Always start with the Excel-supplied PDP links.
 
     function getWorkingAmazonUrl(product) {
       if (!product) return "https://www.amazon.in";
@@ -1709,16 +1699,15 @@
       const rawUrl = product.amazonUrl || "";
       const title = product.title || "";
 
-      // If user selected Direct ASIN mode and a rawUrl exists
+      // Use the supplied PDP URL by default, including for visitors with an older
+      // saved search-mode preference.
       if (amazonLinkMode === "direct" && rawUrl && rawUrl !== "#" && !rawUrl.toLowerCase().includes("coming soon")) {
         const cleanUrl = rawUrl.trim();
-        if (cleanUrl.startsWith("http://") || cleanUrl.startsWith("https://")) {
-          return cleanUrl;
-        }
+        if (/^https?:\/\//i.test(cleanUrl)) return cleanUrl;
         return `https://${cleanUrl}`;
       }
 
-      // Safe mode: Constructs a guaranteed working Amazon India search link so you NEVER get the 404 page
+      // Search fallback for products without a supplied URL, or when chosen manually.
       const cleanKeyword = title
         .replace(/INARI LIFE/gi, "")
         .replace(/–|-|\|/g, " ")
@@ -2649,17 +2638,17 @@
     }
 
     function setupEventListeners() {
-      // Link Mode Toggle (Switches between Guaranteed Working Search and Direct ASIN link)
+      // Link Mode Toggle (Switches between Amazon search and direct PDP links)
       const linkModeBtn = document.getElementById("linkModeBtn");
       const linkModeLabel = document.getElementById("linkModeLabel");
 
       function updateLinkModeUI() {
         if (amazonLinkMode === "safe") {
-          linkModeLabel.textContent = "Safe Links (No 404)";
-          linkModeBtn.title = "Currently using safe Amazon search to prevent 404 errors. Click to switch to direct ASIN draft links.";
+          linkModeLabel.textContent = "Amazon Search Links";
+          linkModeBtn.title = "Currently using Amazon search links. Click to switch to direct PDP links.";
         } else {
           linkModeLabel.textContent = "Direct ASIN Mode";
-          linkModeBtn.title = "Currently linking directly to /dp/ASIN. Click to switch back to safe search mode.";
+          linkModeBtn.title = "Currently linking directly to Amazon PDPs. Click to switch to Amazon search links.";
         }
       }
       updateLinkModeUI();
@@ -2672,8 +2661,8 @@
 
         const toast = document.getElementById("analyticsToast");
         document.getElementById("toastText").textContent = amazonLinkMode === "safe" 
-          ? "Switched to Safe Working Links (100% active Amazon pages)" 
-          : "Switched to Direct ASIN links (from Excel)";
+          ? "Switched to Amazon search links" 
+          : "Switched to direct Amazon PDP links";
         toast.classList.add("show");
         setTimeout(() => toast.classList.remove("show"), 2800);
       });
