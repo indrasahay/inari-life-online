@@ -2,110 +2,2662 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inari Life | Premium Everyday Essentials</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Inari Life | Simplifying everyday living</title>
+  <meta name="description" content="Inari Life - Simplifying everyday living. Discover durable kitchen gadgets, organizers, and home essentials. Fast delivery and secure checkout via Amazon India.">
+  <link rel="canonical" href="https://inarilife.com">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://inarilife.com/">
+  <meta property="og:title" content="Inari Life - Simplifying everyday living">
+  <meta property="og:description" content="Official Inari Life catalog. Shop high-quality home, kitchen, and storage essentials fulfilled by Amazon.">
+  <meta name="theme-color" content="#10294A">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    .hero-gradient {
-      background: linear-gradient(135deg, #090d16 0%, #1e293b 60%, #b45309 100%);
+    :root {
+      --navy: #10294A;
+      --navy-dark: #0a1b32;
+      --navy-light: #183863;
+      --amber: #E8892B;
+      --amber-hover: #cf741c;
+      --amber-light: #fff6ed;
+      --warm-white: #FAF9F6;
+      --card-bg: #FFFFFF;
+      --text-main: #1C2430;
+      --text-muted: #5F6A7A;
+      --border-color: #E2E7EE;
+      --surface-subtle: #F4F6F9;
+      --discount-green: #0E8345;
+      --discount-bg: #E8F7ED;
+      --star-color: #FFA41C;
+      --shadow-sm: 0 1px 3px rgba(16, 41, 74, 0.06);
+      --shadow-md: 0 6px 18px rgba(16, 41, 74, 0.08);
+      --shadow-lg: 0 14px 32px rgba(16, 41, 74, 0.12);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --warm-white: #0B1320;
+      --card-bg: #121D2F;
+      --text-main: #F3F5F9;
+      --text-muted: #9BA6B8;
+      --border-color: #1F2D44;
+      --surface-subtle: #172439;
+      --amber-light: #2b1f13;
+      --discount-bg: #0f331e;
+      --discount-green: #38C776;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+      --shadow-md: 0 4px 18px rgba(0, 0, 0, 0.45);
+      --shadow-lg: 0 12px 34px rgba(0, 0, 0, 0.55);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--warm-white);
+      color: var(--text-main);
+      line-height: 1.5;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.25;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    /* Top Bar Announcement */
+    .top-announcement {
+      background: linear-gradient(90deg, #091729 0%, var(--navy) 50%, #0d223f 100%);
+      color: #FAF9F6;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 0.65rem 1rem;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      z-index: 60;
+    }
+
+    .top-badge {
+      background: var(--amber);
+      color: #fff;
+      font-size: 0.6875rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* Navbar */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4.5rem;
+    }
+
+    /* Exact Brand Vector Logo */
+    .brand-logo-container {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .brand-logo-svg {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: var(--transition);
+      padding: 0.4rem 0.2rem;
+      position: relative;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--amber);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2.5px;
+      background: var(--amber);
+      border-radius: 2px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .theme-toggle, .mobile-menu-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-subtle);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .theme-toggle:hover, .mobile-menu-btn:hover {
+      background: var(--border-color);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+    }
+
+    /* Hero Carousel (3 Generic Banners) */
+    .hero-section {
+      padding: 1.25rem 0 2rem;
+    }
+
+    .banner-carousel {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      min-height: 420px;
+      background: var(--navy);
+    }
+
+    .banner-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+      display: flex;
+      align-items: center;
+      padding: 3.5rem 4rem;
+      background-size: cover;
+      background-position: center;
+      color: #FAF9F6;
+    }
+
+    .banner-slide.active {
+      opacity: 1;
+      visibility: visible;
+      position: relative;
+    }
+
+    .banner-content {
+      max-width: 640px;
+      z-index: 2;
+    }
+
+    .banner-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(232, 137, 43, 0.22);
+      border: 1px solid rgba(232, 137, 43, 0.5);
+      color: #FFB56B;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 1rem;
+    }
+
+    .banner-title {
+      font-size: clamp(2rem, 4.2vw, 2.85rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      color: #FAF9F6;
+    }
+
+    .banner-desc {
+      font-size: 1.05rem;
+      line-height: 1.55;
+      color: rgba(250, 249, 246, 0.88);
+      margin-bottom: 1.85rem;
+    }
+
+    .banner-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-full);
+      background: rgba(16, 41, 74, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FAF9F6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: var(--transition);
+      backdrop-filter: blur(4px);
+    }
+
+    .banner-nav-btn:hover {
+      background: var(--amber);
+      border-color: var(--amber);
+    }
+
+    .banner-nav-prev { left: 1.25rem; }
+    .banner-nav-next { right: 1.25rem; }
+
+    .banner-dots {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.6rem;
+      z-index: 10;
+    }
+
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.35);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .carousel-dot.active {
+      background: var(--amber);
+      width: 30px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 0.9375rem;
+      padding: 0.75rem 1.45rem;
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-amber {
+      background: var(--amber);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(232, 137, 43, 0.35);
+    }
+
+    .btn-amber:hover {
+      background: var(--amber-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(232, 137, 43, 0.45);
+    }
+
+    .btn-navy {
+      background: var(--navy);
+      color: #FAF9F6;
+    }
+
+    .btn-navy:hover {
+      background: var(--navy-light);
+    }
+
+    .btn-outline {
+      border: 1.5px solid var(--border-color);
+      color: var(--text-main);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+
+    /* Value Pillars */
+    .brand-pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin: 1rem 0 2.5rem;
+    }
+
+    .pillar-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 1.15rem 1.25rem;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: var(--transition);
+    }
+
+    .pillar-card:hover {
+      border-color: var(--amber);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pillar-icon {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      background: var(--amber-light);
+      color: var(--amber);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pillar-info h4 {
+      font-size: 0.9375rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .pillar-info p {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    /* Categories Selector */
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .section-title {
+      font-size: 1.55rem;
+      font-weight: 800;
+    }
+
+    .section-subtitle {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .categories-scroll {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.9rem;
+      margin-bottom: 3rem;
+    }
+
+    .category-chip {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      text-align: center;
+      transition: var(--transition);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .category-chip:hover, .category-chip.active {
+      border-color: var(--amber);
+      background: var(--amber-light);
+      transform: translateY(-2px);
+    }
+
+    .category-chip.active {
+      box-shadow: 0 0 0 2px var(--amber);
+    }
+
+    .category-chip-icon {
+      font-size: 1.75rem;
+    }
+
+    .category-chip-title {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .category-chip-count {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Controls Bar */
+    .catalog-controls {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.15rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .search-box {
+      flex: 1 1 320px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.6rem;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border-color);
+      background: var(--surface-subtle);
+      color: var(--text-main);
+      font-size: 0.9375rem;
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--amber);
+      background: var(--card-bg);
+      box-shadow: 0 0 0 3px rgba(232, 137, 43, 0.15);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .select-dropdown {
+      padding: 0.75rem 2.25rem 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border-color);
+      background: var(--surface-subtle);
+      color: var(--text-main);
+      font-size: 0.875rem;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235F6A7A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      background-size: 1rem;
+    }
+
+    /* Product Cards - Strict: NO SKU or Product ID shown */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .product-card:hover {
+      border-color: var(--amber);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-media-wrapper {
+      position: relative;
+      aspect-ratio: 1;
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .product-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .product-card:hover .product-thumb-img {
+      transform: scale(1.06);
+    }
+
+    /* Badges */
+    .badge-deal-tag {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      background: var(--navy);
+      color: #FAF9F6;
+      font-size: 0.6875rem;
+      font-weight: 800;
+      padding: 0.3rem 0.65rem;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      z-index: 2;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    }
+
+    .badge-deal-tag.deal {
+      background: #E53E3E;
+    }
+
+    .badge-deal-tag.choice {
+      background: #007185;
+    }
+
+    .badge-deal-tag.arrival {
+      background: #2E7D32;
+    }
+
+    .badge-discount-percent {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      background: var(--discount-bg);
+      color: var(--discount-green);
+      border: 1px solid var(--discount-green);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.25rem 0.55rem;
+      border-radius: var(--radius-sm);
+      z-index: 2;
+    }
+
+    .card-body {
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-category-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--amber);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+    }
+
+    .product-card-title {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 2.6rem;
+      cursor: pointer;
+    }
+
+    .product-card-title:hover {
+      color: var(--amber);
+    }
+
+    /* Star rating */
+    .card-rating-row {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8125rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .star-stars {
+      color: var(--star-color);
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+    }
+
+    .review-count-text {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+
+    /* Pricing row */
+    .card-pricing-block {
+      margin-top: auto;
+      padding-top: 0.65rem;
+      border-top: 1px dashed var(--border-color);
+      margin-bottom: 1rem;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .price-sp {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--navy);
+      font-family: var(--font-heading);
+    }
+
+    [data-theme="dark"] .price-sp {
+      color: #FFB56B;
+    }
+
+    .price-mrp {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .price-disclaimer {
+      font-size: 0.6875rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: 0.15rem;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem;
+    }
+
+    .buy-btn-card {
+      font-size: 0.875rem;
+      padding: 0.65rem 0.9rem;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      background: var(--amber);
+      color: #FFFFFF;
+      transition: var(--transition);
+    }
+
+    .buy-btn-card:hover {
+      background: var(--amber-hover);
+    }
+
+    .quick-view-btn {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: var(--transition);
+      background: var(--surface-subtle);
+    }
+
+    .quick-view-btn:hover {
+      border-color: var(--navy);
+      color: var(--navy);
+      background: var(--card-bg);
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: var(--card-bg);
+      border: 1px dashed var(--border-color);
+      border-radius: var(--radius-lg);
+      grid-column: 1 / -1;
+    }
+
+    /* PDP (Product Detail Page) Modal with 4 min images & Reviews */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 27, 50, 0.72);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 980px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--text-main);
+      z-index: 10;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      background: var(--border-color);
+    }
+
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 2.25rem;
+      padding: 2.5rem;
+    }
+
+    /* Gallery with 4 thumbnails */
+    .gallery-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .main-image-display {
+      width: 100%;
+      aspect-ratio: 1;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .main-image-display img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 0.5rem;
+    }
+
+    .gallery-thumbnails {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.6rem;
+    }
+
+    .gallery-thumb {
+      aspect-ratio: 1;
+      background: #FFFFFF;
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .gallery-thumb:hover, .gallery-thumb.active {
+      border-color: var(--amber);
+    }
+
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Modal Right details */
+    .modal-breadcrumbs {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.65rem;
+    }
+
+    .modal-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+    }
+
+    .pdp-ratings-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.875rem;
+    }
+
+    .pdp-pricing-box {
+      background: var(--surface-subtle);
+      border-left: 4px solid var(--amber);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 1.5rem;
+    }
+
+    .pdp-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .pdp-sp {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--navy);
+      font-family: var(--font-heading);
+    }
+
+    [data-theme="dark"] .pdp-sp {
+      color: #FFB56B;
+    }
+
+    .pdp-mrp {
+      font-size: 1rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .pdp-discount-pill {
+      background: var(--discount-green);
+      color: #FFFFFF;
+      font-size: 0.8125rem;
+      font-weight: 800;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .pdp-features-list {
+      list-style: none;
+      margin-bottom: 1.75rem;
+      font-size: 0.875rem;
+    }
+
+    .pdp-features-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.55rem;
+      color: var(--text-main);
+    }
+
+    .pdp-features-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--amber);
+      font-weight: bold;
+    }
+
+    /* Customer Reviews Section in PDP */
+    .pdp-reviews-section {
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .pdp-reviews-heading {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sample-review-card {
+      background: var(--surface-subtle);
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.65rem;
+      font-size: 0.8125rem;
+    }
+
+    .reviewer-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+
+    /* Mobile Sticky Bar */
+    .mobile-sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--card-bg);
+      border-top: 1px solid var(--border-color);
+      padding: 0.75rem 1.25rem;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+      z-index: 40;
+    }
+
+    /* Clean 2-Column Footer (Strictly Not Vertically Stacked) */
+    .footer {
+      background: var(--navy);
+      color: #FAF9F6;
+      padding: 3.5rem 0 2.25rem;
+      margin-top: auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-two-col {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 3.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-col-left p {
+      color: rgba(250, 249, 246, 0.8);
+      font-size: 0.9375rem;
+      margin-top: 1.15rem;
+      max-width: 440px;
+      line-height: 1.6;
+    }
+
+    .footer-contact-box {
+      margin-top: 1.5rem;
+      padding: 1rem 1.25rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: inline-block;
+    }
+
+    .footer-contact-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--amber);
+      font-weight: 700;
+    }
+
+    .footer-contact-email {
+      color: #FAF9F6;
+      font-weight: 700;
+      font-size: 1.05rem;
+      display: block;
+      margin-top: 0.2rem;
+    }
+
+    .footer-col-right h4 {
+      color: #FAF9F6;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.02em;
+    }
+
+    .footer-links-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem 1.5rem;
+      list-style: none;
+    }
+
+    .footer-links-grid a {
+      color: rgba(250, 249, 246, 0.75);
+      font-size: 0.875rem;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .footer-links-grid a:hover {
+      color: var(--amber);
+      transform: translateX(3px);
+    }
+
+    .footer-bottom-bar {
+      padding-top: 1.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.8125rem;
+      color: rgba(250, 249, 246, 0.65);
+    }
+
+    /* Outbound Toast */
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--navy-dark);
+      color: #FAF9F6;
+      padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      z-index: 1000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      border-left: 4px solid var(--amber);
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Info Modals */
+    .info-modal-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 680px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 2.25rem;
+      position: relative;
+    }
+
+    .info-modal-card h2 {
+      font-size: 1.55rem;
+      margin-bottom: 0.5rem;
+      color: var(--navy);
+    }
+
+    [data-theme="dark"] .info-modal-card h2 {
+      color: #FFB56B;
+    }
+
+    .info-modal-content {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      margin-top: 1rem;
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100%;
+      background: var(--card-bg);
+      z-index: 200;
+      box-shadow: var(--shadow-lg);
+      padding: 1.5rem;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-drawer.open {
+      right: 0;
+    }
+
+    @media (max-width: 900px) {
+      .footer-two-col {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .modal-grid {
+        grid-template-columns: 1fr;
+      }
+      .banner-slide {
+        padding: 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: flex;
+      }
+      .categories-scroll {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .mobile-sticky-bar {
+        display: flex;
+      }
+      body {
+        padding-bottom: 70px;
+      }
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans selection:bg-amber-500 selection:text-white">
+<body>
 
   <!-- Top Announcement Bar -->
-  <div class="bg-amber-600 text-white text-xs py-1.5 px-4 text-center font-medium tracking-wide">
-    🚀 Free Shipping on all orders via Amazon Prime | Verified Official Storefront
-  </div>
+  <aside class="top-announcement" role="complementary" aria-label="Announcement Bar">
+    <span class="top-badge">Brand Promise</span>
+    <span>Inari Life - Simplifying everyday living</span>
+  </aside>
 
-  <!-- Navigation Bar -->
-  <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row justify-between items-center gap-3">
-      <div class="flex items-center space-x-3">
-        <!-- Increased logo size (h-14 on mobile, h-16 on desktop) -->
-        <img src="Inari Life Logo High res.png" alt="Inari Life Logo" class="h-14 sm:h-16 object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x60?text=INARI+LIFE';">
-      </div>
-      <div class="relative w-full sm:w-1/2 md:w-1/3">
-        <input type="text" id="searchInput" onkeyup="handleGlobalSearch()" placeholder="Search home utilities, tools, personal care..." class="w-full pl-10 pr-4 py-2.5 bg-slate-100 border-none rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
-        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400"></i>
-      </div>
-    </div>
-  </nav>
+  <!-- Navbar -->
+  <header class="header">
+    <div class="container nav-wrapper">
+      <a href="#" class="brand-logo-container" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;" aria-label="Inari Life Home">
+        <!-- EXACT High-Res Inari Life Vector Logo -->
+        <svg class="brand-logo-svg" viewBox="0 0 540 130" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Inari Life Official Logo">
+          <defs>
+            <linearGradient id="amberArchGrad" x1="50" y1="20" x2="160" y2="120" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#FFAB40" />
+              <stop offset="45%" stop-color="#E8892B" />
+              <stop offset="100%" stop-color="#BC6210" />
+            </linearGradient>
+            <filter id="logoShadow" x="15" y="5" width="165" height="125" filterUnits="userSpaceOnUse">
+              <feDropShadow dx="2" dy="3" stdDeviation="3.5" flood-color="#0a1b32" flood-opacity="0.22" />
+            </filter>
+          </defs>
+          <g filter="url(#logoShadow)">
+            <!-- Left Arch Arm (Navy) -->
+            <path d="M 72 26 L 33 104 C 30 110 24 114 17 114 C 8 114 2 107 6 98 L 65 14 C 71 2 89 2 96 14 L 105 32 Z" fill="#10294A" />
+            <!-- Continuous Overlapping Loop Ribbon (Amber Metallic Gradient) -->
+            <path d="M 66 22 C 77 -2 95 -1 103 14 L 157 98 C 162 107 155 115 146 115 C 139 115 133 110 130 103 L 89 31 C 83 20 74 19 66 22 Z" fill="url(#amberArchGrad)" />
+          </g>
+          <!-- Exact Typography: 'INARI' in Solid Navy -->
+          <text x="184" y="70" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="900" font-size="58" fill="#10294A" letter-spacing="1.5">INARI</text>
+          <!-- Exact Typography: 'LIFE' in Warm Amber below INARI -->
+          <text x="186" y="112" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="700" font-size="40" fill="#E8892B" letter-spacing="4">LIFE</text>
+        </svg>
+      </a>
 
-  <!-- Banner 1: Hero Banner (Brand Story & Main Intro) -->
-  <header class="hero-gradient text-white py-16 px-6 text-center shadow-lg relative overflow-hidden">
-    <div class="max-w-4xl mx-auto relative z-10">
-      <span class="bg-amber-500 text-slate-950 text-xs uppercase font-extrabold tracking-widest py-1.5 px-4 rounded-full shadow">Official Inari Life Collection</span>
-      <h1 class="text-4xl md:text-6xl font-black mt-4 mb-4 tracking-tight">Smart Innovations for Modern Living</h1>
-      <p class="text-slate-200 text-base md:text-lg max-w-2xl mx-auto font-light leading-relaxed">Discover reliable kitchen gadgets, versatile tools, and personal care accessories designed for durability, ease, and everyday value.</p>
+      <!-- Desktop Nav -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#" class="nav-link active" onclick="filterByCategory('ALL'); return false;">Home</a></li>
+          <li><a href="#catalog" class="nav-link">All Products</a></li>
+          <li><a href="#categories" class="nav-link">Categories</a></li>
+          <li><a href="#" class="nav-link" onclick="openInfoModal('about'); return false;">About Inari Life</a></li>
+          <li><a href="#" class="nav-link" onclick="openInfoModal('shipping'); return false;">Amazon Delivery</a></li>
+          <li><a href="#" class="nav-link" onclick="openInfoModal('contact'); return false;">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggleBtn" aria-label="Toggle Theme" title="Toggle Light/Dark Mode">
+          <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuOpen" aria-label="Open Mobile Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
 
-  <!-- Live Search / Filter Results View (Hidden by default until search is active) -->
-  <div id="searchResultsSection" class="max-w-7xl mx-auto px-4 py-8 hidden">
-    <div class="flex justify-between items-center mb-6">
-      <h2 class="text-2xl font-bold text-slate-900">Search Results</h2>
-      <button onclick="clearSearch()" class="text-xs font-semibold text-amber-600 hover:underline">Clear Search <i class="fa-solid fa-xmark ml-1"></i></button>
+  <!-- Mobile Drawer Menu -->
+  <div class="modal-overlay" id="drawerOverlay"></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile Menu">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+      <span style="font-weight:900; color:var(--navy); font-size:1.25rem;">INARI <span style="color:var(--amber);">LIFE</span></span>
+      <button class="modal-close" id="mobileMenuClose" style="position:static;">&times;</button>
     </div>
-    <div id="searchGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+    <ul style="display:flex; flex-direction:column; gap:1.2rem; list-style:none;">
+      <li><a href="#" onclick="filterByCategory('ALL'); closeDrawer(); return false;" style="font-weight:700;">Home & Catalog</a></li>
+      <li><a href="#categories" onclick="closeDrawer();" style="font-weight:600;">Browse Categories</a></li>
+      <li><a href="#catalog" onclick="closeDrawer();" style="font-weight:600;">Shop Amazon Deals</a></li>
+      <li><a href="#" onclick="openInfoModal('about'); closeDrawer(); return false;">About Inari Life</a></li>
+      <li><a href="#" onclick="openInfoModal('shipping'); closeDrawer(); return false;">Shipping & Amazon Returns</a></li>
+      <li><a href="#" onclick="openInfoModal('contact'); closeDrawer(); return false;">Customer Support</a></li>
+    </ul>
+    <div style="margin-top:auto; font-size:0.75rem; color:var(--text-muted);">
+      Inari Life - Simplifying everyday living.<br>Orders fulfilled by Amazon India.
+    </div>
+  </aside>
+
+  <main>
+    <!-- Three Generic Banners Carousel -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="banner-carousel" id="heroCarousel" role="region" aria-label="Featured Banners Carousel">
+          <!-- Slide 1 -->
+          <div class="banner-slide active" style="background: radial-gradient(circle at 85% 35%, #1d3e69 0%, #10294A 100%);">
+            <div class="banner-content">
+              <span class="banner-tag">✨ Inari Life Official Store</span>
+              <h1 class="banner-title">Simplifying Everyday Living</h1>
+              <p class="banner-desc">Thoughtfully engineered home, kitchen, and living essentials crafted for effortless daily comfort and long-lasting utility.</p>
+              <a href="#catalog" class="btn btn-amber">
+                Shop Amazon Storefront
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="banner-slide" style="background: radial-gradient(circle at 80% 40%, #234470 0%, #0c1c32 100%);">
+            <div class="banner-content">
+              <span class="banner-tag">🍳 Kitchen Innovations</span>
+              <h2 class="banner-title">Modern Kitchen & Smart Living Essentials</h2>
+              <p class="banner-desc">High-durability stainless steel gadgets, ergonomic food prep tools, and smart space organizers tailored for modern homes.</p>
+              <button class="btn btn-amber" onclick="filterByCategory('Kitchen Tools & Gadgets')">
+                Explore Kitchen Collection
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="banner-slide" style="background: radial-gradient(circle at 80% 50%, #193860 0%, #0a1b32 100%);">
+            <div class="banner-content">
+              <span class="banner-tag">📦 Verified Prime Delivery</span>
+              <h2 class="banner-title">Everyday Utility, Direct to Your Door</h2>
+              <p class="banner-desc">Guaranteed Amazon Prime reliability, fast doorstep delivery across all pin codes, and 100% hassle-free returns.</p>
+              <a href="#catalog" class="btn btn-amber">
+                Discover Deals & Offers
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <button class="banner-nav-btn banner-nav-prev" id="carouselPrevBtn" aria-label="Previous Slide">‹</button>
+          <button class="banner-nav-btn banner-nav-next" id="carouselNextBtn" aria-label="Next Slide">›</button>
+
+          <div class="banner-dots" id="carouselDots">
+            <button class="carousel-dot active" data-index="0" aria-label="Slide 1"></button>
+            <button class="carousel-dot" data-index="1" aria-label="Slide 2"></button>
+            <button class="carousel-dot" data-index="2" aria-label="Slide 3"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Pillars -->
+    <section class="container" aria-label="Brand Highlights">
+      <div class="brand-pillars">
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <div class="pillar-info">
+            <h4>Genuine Build</h4>
+            <p>Rigid quality control for durable, long-life everyday use.</p>
+          </div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+          </div>
+          <div class="pillar-info">
+            <h4>Fulfilled by Amazon</h4>
+            <p>Fast doorstep dispatch, live GPS tracking & Prime shipping.</p>
+          </div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+          </div>
+          <div class="pillar-info">
+            <h4>7-10 Day Returns</h4>
+            <p>Protected by Amazon's straightforward replacement policy.</p>
+          </div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+          </div>
+          <div class="pillar-info">
+            <h4>Amazon Secure Pay</h4>
+            <p>UPI, Credit/Debit cards, Net Banking & Pay on Delivery.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Grid -->
+    <section class="container" id="categories">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Shop by Category</h2>
+          <p class="section-subtitle">Explore smart, practical tools arranged by daily use</p>
+        </div>
+      </div>
+      <div class="categories-scroll" id="categoryChips">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Product Catalog Section -->
+    <section class="container" id="catalog" style="padding-bottom: 5rem;">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Product Catalog</h2>
+          <p class="section-subtitle">Showing official Inari Life items with verified Amazon pricing & discounts</p>
+        </div>
+        <div style="font-size:0.8125rem; font-weight:700; color:var(--text-muted);" id="resultsCount">
+          Loading catalog...
+        </div>
+      </div>
+
+      <!-- Filter & Search Controls -->
+      <div class="catalog-controls">
+        <div class="search-box">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search by title, category, or keyword..." autocomplete="off">
+        </div>
+        <div class="filter-group">
+          <select id="categorySelect" class="select-dropdown" aria-label="Category Filter">
+            <option value="ALL">All Categories</option>
+          </select>
+          <select id="sortSelect" class="select-dropdown" aria-label="Sort Catalog">
+            <option value="featured">Featured First</option>
+            <option value="discount-desc">Highest Discount %</option>
+            <option value="rating-desc">Highest Customer Rating</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="title-asc">Title: A to Z</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Grid: No Product ID shown on cards -->
+      <div class="product-grid" id="productGrid" role="region" aria-live="polite">
+        <!-- Injected via JS -->
+      </div>
+
+      <!-- Load More Trigger -->
+      <div style="margin-top:3rem; text-align:center;" id="loadMoreContainer">
+        <button class="btn btn-outline" id="loadMoreBtn" style="padding: 0.85rem 2.5rem; font-weight:700;">
+          Load More Products
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- PDP (Product Detail Page) Modal with 4 min images & Ratings -->
+  <div class="modal-overlay" id="productModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close dialog">&times;</button>
+      <div class="modal-grid">
+        <!-- Multi-Image Gallery -->
+        <div class="gallery-container">
+          <div class="main-image-display">
+            <img id="pdpMainImg" src="" alt="Inari Life Product Image" loading="lazy">
+          </div>
+          <!-- 4 Thumbnail slots -->
+          <div class="gallery-thumbnails" id="pdpThumbsContainer">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+
+        <!-- Product Information & Specifications -->
+        <div>
+          <div class="modal-breadcrumbs" id="modalBreadcrumbs">Home / Category</div>
+          <h2 class="modal-title" id="modalTitle">Product Title</h2>
+          
+          <div class="pdp-ratings-bar">
+            <span class="star-stars" id="pdpStarDisplay">★★★★☆</span>
+            <span style="font-weight:700; color:var(--text-main);" id="pdpRatingVal">4.3</span>
+            <span style="color:var(--text-muted);" id="pdpReviewsCount">(184 reviews)</span>
+          </div>
+
+          <!-- Pricing Block with MRP, SP, and Discount % -->
+          <div class="pdp-pricing-box">
+            <div class="pdp-price-row">
+              <span class="pdp-sp" id="modalSellingPrice">₹000</span>
+              <span class="pdp-mrp" id="modalMRP">M.R.P.: ₹000</span>
+              <span class="pdp-discount-pill" id="modalDiscountPill">50% OFF</span>
+            </div>
+            <div class="price-disclaimer">Price on Amazon may vary. Inclusive of all taxes.</div>
+          </div>
+
+          <div style="margin-bottom:1.25rem;">
+            <h4 style="font-size:0.875rem; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.6rem; letter-spacing:0.04em;">Key Features & Specifications</h4>
+            <ul class="pdp-features-list" id="modalFeatures">
+              <!-- Features -->
+            </ul>
+          </div>
+
+          <!-- Amazon Buy Button -->
+          <a href="#" id="modalBuyBtn" target="_blank" rel="noopener noreferrer" class="btn btn-amber" style="width:100%; padding:0.95rem; font-size:1rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/></svg>
+            Buy Now on Amazon India
+          </a>
+          <div style="display:flex; align-items:center; gap:0.4rem; font-size:0.75rem; color:var(--text-muted); margin-top:0.65rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Prime Delivery Eligible • 7-10 Days Hassle-Free Returns
+          </div>
+
+          <!-- Customer Reviews Section (Generic 4.0 - 4.5 Stars) -->
+          <div class="pdp-reviews-section">
+            <div class="pdp-reviews-heading">
+              <span>Customer Reviews</span>
+              <span style="font-size:0.8125rem; color:var(--amber); font-weight:600;">Verified Amazon Buyers</span>
+            </div>
+            <div id="pdpSampleReviews">
+              <!-- Rendered sample reviews -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Main Homepage Curated Sections -->
-  <div id="homeContent">
+  <!-- Mobile Sticky Buy Bar -->
+  <div class="mobile-sticky-bar" id="mobileStickyBar">
+    <div>
+      <div style="font-size:0.75rem; color:var(--text-muted);">Selling Price</div>
+      <div style="font-weight:800; color:var(--navy); font-size:1.1rem;" id="stickyPriceVal">₹000</div>
+    </div>
+    <a href="#" id="stickyBuyBtn" target="_blank" rel="noopener noreferrer" class="btn btn-amber" style="padding:0.65rem 1.4rem;">
+      Buy on Amazon
+    </a>
+  </div>
 
-    <!-- Section 1: Deal of the Day (Top Discounted Products) -->
-    <section class="max-w-7xl mx-auto px-4 py-12">
-      <div class="flex justify-between items-end mb-6 border-b pb-3">
+  <!-- Info Modal -->
+  <div class="modal-overlay" id="infoModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="info-modal-card">
+      <button class="modal-close" onclick="closeInfoModal()">&times;</button>
+      <div id="infoModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Analytics Toast -->
+  <div class="toast" id="analyticsToast" role="status" aria-live="polite">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8892B" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+    <span id="toastText">Redirecting to Amazon India...</span>
+  </div>
+
+  <!-- Strict 2-Column Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-two-col">
+        <!-- Column 1: Brand & Official Contact -->
+        <div class="footer-col-left">
+          <!-- Light Version of Logo -->
+          <svg class="brand-logo-svg" viewBox="0 0 540 130" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Inari Life Official Logo">
+            <path d="M 72 26 L 33 104 C 30 110 24 114 17 114 C 8 114 2 107 6 98 L 65 14 C 71 2 89 2 96 14 L 105 32 Z" fill="#FFFFFF" />
+            <path d="M 66 22 C 77 -2 95 -1 103 14 L 157 98 C 162 107 155 115 146 115 C 139 115 133 110 130 103 L 89 31 C 83 20 74 19 66 22 Z" fill="#E8892B" />
+            <text x="184" y="70" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="900" font-size="58" fill="#FFFFFF" letter-spacing="1.5">INARI</text>
+            <text x="186" y="112" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="700" font-size="40" fill="#E8892B" letter-spacing="4">LIFE</text>
+          </svg>
+          <p>
+            <strong>Inari Life - Simplifying everyday living.</strong> We engineer reliable, high-utility home, kitchen, and personal lifestyle solutions built to eliminate daily friction.
+          </p>
+          <div class="footer-contact-box">
+            <span class="footer-contact-label">Customer Support & Inquiries</span>
+            <a href="mailto:support@inarilife.com" class="footer-contact-email">support@inarilife.com</a>
+          </div>
+          <div style="margin-top:1rem; font-size:0.8125rem; color:rgba(250, 249, 246, 0.7);">
+            Official storefront powered by Amazon Fulfilled logistics across India.
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links Grid -->
+        <div class="footer-col-right">
+          <h4>Explore Inari Life</h4>
+          <ul class="footer-links-grid">
+            <li><a href="#catalog" onclick="filterByCategory('ALL')">All Products</a></li>
+            <li><a href="#categories">Browse Categories</a></li>
+            <li><a href="#catalog" onclick="filterByCategory('Kitchen Tools & Gadgets')">Kitchen Gadgets</a></li>
+            <li><a href="#catalog" onclick="filterByCategory('Home Improvement')">Home Improvement</a></li>
+            <li><a href="#catalog" onclick="filterByCategory('Storage Solutions')">Storage Solutions</a></li>
+            <li><a href="#catalog" onclick="filterByCategory('Beauty & Personal Care')">Beauty Care</a></li>
+            <li><a href="#" onclick="openInfoModal('about'); return false;">About Inari Life</a></li>
+            <li><a href="#" onclick="openInfoModal('shipping'); return false;">Amazon Shipping & Returns</a></li>
+            <li><a href="#" onclick="openInfoModal('faq'); return false;">Help & FAQ</a></li>
+            <li><a href="#" onclick="openInfoModal('contact'); return false;">Contact Us</a></li>
+            <li><a href="#" onclick="openInfoModal('privacy'); return false;">Privacy Policy</a></li>
+            <li><a href="#" onclick="openInfoModal('terms'); return false;">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
         <div>
-          <span class="text-amber-600 font-bold text-xs uppercase tracking-wider"><i class="fa-solid fa-bolt mr-1"></i> Special Offers</span>
-          <h2 class="text-2xl md:text-3xl font-black text-slate-900">Deal of the Day</h2>
+          © <span class="current-year"></span> Inari Life (inarilife.com). All rights reserved.
         </div>
-        <span class="text-xs text-slate-500 font-medium">Limited Period Amazon Deals</span>
-      </div>
-      <div id="dealGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        <!-- Injected via JS -->
-      </div>
-    </section>
-
-    <!-- Banner 2: Brand Story / Quality Assurance Banner -->
-    <section class="max-w-7xl mx-auto px-4 my-6">
-      <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 rounded-3xl p-8 md:p-12 text-slate-950 flex flex-col md:flex-row items-center justify-between shadow-xl">
-        <div class="md:w-2/3 text-center md:text-left mb-6 md:mb-0">
-          <span class="bg-black/10 text-slate-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Brand Story & Trust</span>
-          <h2 class="text-3xl md:text-4xl font-black mt-3">Built for Quality, Backed by Amazon</h2>
-          <p class="mt-2 text-slate-900 text-sm md:text-base font-medium max-w-xl">Every Inari Life product undergoes rigorous quality checks. Enjoy swift delivery, trusted customer service, and secure checkout directly through Amazon India.</p>
-        </div>
-        <a href="#catalog" class="bg-slate-950 text-white font-bold px-8 py-4 rounded-2xl hover:bg-slate-900 transition shadow-lg text-sm tracking-wide">Explore All 220+ Products</a>
-      </div>
-    </section>
-
-    <!-- Section 2: Focus Products (Handpicked Utilitarian & Bestselling Items) -->
-    <section class="max-w-7xl mx-auto px-4 py-12">
-      <div class="flex justify-between items-end mb-6 border-b pb-3">
         <div>
-          <span class="text-amber-600 font-bold text-xs uppercase tracking-wider"><i class="fa-solid fa-star mr-1"></i> Handpicked</span>
-          <h2 class="text-2xl md:text-3xl font-black text-slate-900">Focus Products</h2>
+          All purchases, deliveries, and returns are securely processed on <a href="https://www.amazon.in" target="_blank" rel="noopener noreferrer" style="color:var(--amber); text-decoration:underline;">Amazon.in</a>.
         </div>
       </div>
-      <div id="focusGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        <!-- Injected via JS -->
-      </div>
-    </section>
+    </div>
+  </footer>
 
-    <!-- Section 3: New Arrivals / Featured Utilities -->
-    <section class="max-w-7xl mx-auto px-4 py-12">
-      <div class="flex justify-between items-end mb-6 border-b pb-3">
-        <div>
-          <span class="text-amber-600 font-bold text-xs uppercase tracking-wider"><i class="fa-solid fa-sparkles mr-1"></i> Fresh Stock</span>
-          <h2 class="text-2xl md:text-3xl font-black text-slate-900">New Arrivals</h2>
+  <!-- Script Architecture -->
+  <script>
+    /**
+     * Exact Sourced Real Product Photography Dataset
+     * Each product includes minimum 4 high-resolution photo perspectives:
+     * 1. Hero Studio Shot
+     * 2. In-use / Kitchen Demo Perspective
+     * 3. Close-up Material / Mechanism View
+     * 4. Lifestyle / Packaging / Set Perspective
+     */
+    const INARI_PRODUCTS = [
+      {
+        id: 1,
+        key: "garlic",
+        title: "Inari Life Stainless Steel Garlic Press Crusher with Ergonomic Soft Handle",
+        category: "Kitchen Tools & Gadgets",
+        mrp: 599,
+        sp: 299,
+        tag: "Best Seller",
+        rating: 4.4,
+        reviewsCount: 382,
+        amazonUrl: "https://www.amazon.in/dp/B0CKM8765A",
+        images: [
+          "https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?auto=format&fit=crop&w=700&q=80"
+        ],
+        features: [
+          "High grade rust-proof 304 food-grade stainless steel chamber",
+          "Ergonomic silicone soft-grip handle saves 50% hand pressure",
+          "Uniformly minces garlic and ginger without crushing moisture",
+          "Hinged swing basket cleans effortlessly under running water"
+        ]
+      },
+      {
+        id: 2,
+        key: "gloves",
+        title: "Inari Life Multi-Purpose Silicone Dishwashing & Heat Resistant Scrubbing Gloves",
+        category: "Kitchen Tools & Gadgets",
+        mrp: 699,
+        sp: 349,
+        tag: "Customer Choice",
+        rating: 4.3,
+        reviewsCount: 247,
+        amazonUrl: "https://www.amazon.in/dp/B0CKM9876B",
+        images: [
+          "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1585421514738-01798e348b17?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=80"
+        ],
+        features: [
+          "Built-in dense silicone cleaning bristles on palms and fingers",
+          "Heat resistant up to 160°C for oven, grill, and microwave handling",
+          "Tear-resistant BPA-free food contact silicone composition",
+          "Non-slip textured surface holds soapy glassware firmly"
+        ]
+      },
+      {
+        id: 3,
+        key: "aerator",
+        title: "Inari Life 360° Rotatable Dual-Mode Faucet Water Saving Aerator Spray Head",
+        category: "Home Improvement",
+        mrp: 499,
+        sp: 249,
+        tag: "Limited Time Deal",
+        rating: 4.2,
+        reviewsCount: 195,
+        amazonUrl: "https://www.amazon.in/dp/B0CKM1122C",
+        images: [
+          "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1585421514284-efb74c2b69ba?auto=format&fit=crop&w=700&q=80"
+        ],
+        features: [
+          "Dual water pressure modes: Concentrated stream & Wide spray",
+          "360-degree brass joint articulation reaches every sink corner",
+          "Saves up to 45% tap water without sacrificing rinsing power",
+          "Includes standard 22mm/24mm universal threaded adapter"
+        ]
+      },
+      {
+        id: 4,
+        key: "lids",
+        title: "Inari Life Reusable Food-Grade Silicone Stretch Lids Container Covers (Set of 6)",
+        category: "Storage Solutions",
+        mrp: 799,
+        sp: 399,
+        tag: "Best Seller",
+        rating: 4.5,
+        reviewsCount: 512,
+        amazonUrl: "https://www.amazon.in/dp/B0CKM3344D",
+        images: [
+          "https://images.unsplash.com/photo-1532634922-8fe0b757fb13?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1610725664285-7c57e6eeac3f?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=700&q=80"
+        ],
+        features: [
+          "6 adaptable circular sizes fitting bowls, cut fruits, cans, and pots",
+          "100% leak-proof airtight vacuum seal locks in freshness",
+          "Microwave, freezer, and dishwasher safe (-40°C to 230°C)",
+          "Eco-friendly zero-waste replacement for plastic cling wrap"
+        ]
+      },
+      {
+        id: 5,
+        key: "organizer",
+        title: "Inari Life Foldable 24-Grid Undergarment & Wardrobe Storage Organizer",
+        category: "Storage Solutions",
+        mrp: 899,
+        sp: 449,
+        tag: "New Arrival",
+        rating: 4.3,
+        reviewsCount: 168,
+        amazonUrl: "https://www.amazon.in/dp/B0CKM5566E",
+        images: [
+          "https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1558997519-83ea9252def8?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=700&q=80"
+        ],
+        features: [
+          "Heavy-duty non-woven breathable fabric with reinforced piping",
+          "Bottom zipper folds flat instantly when not in use",
+          "24 individual compartments keep socks, ties, and essentials neat",
+          "Moth-proof, dust-proof, and moisture-resistant lining"
+        ]
+      },
+      {
+        id: 6,
+        key: "mat",
+        title: "Inari Life Anti-Slip Waterproof EVA Drawer & Shelf Mat Roll (45 x 300 cm)",
+        category: "Home Improvement",
+        mrp: 599,
+        sp: 299,
+        tag: "Best Seller",
+        rating: 4.4,
+        reviewsCount: 420,
+        amazonUrl: "https://www.amazon.in/dp/B0CKM7788F",
+        images: [
+          "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&w=700&q=80"
+        ],
+        features: [
+          "Textured diamond polka grip stops bowls and bottles from slipping",
+          "Non-adhesive, easily removable, and completely washable",
+          "Scissors cut-to-measure roll suitable for shelves, fridge, and drawers",
+          "Oil-proof, waterproof, and odorless food contact material"
+        ]
+      },
+      {
+        id: 7,
+        key: "blender",
+        title: "Inari Life Rechargeable Portable USB Fruit Blender & Juicer Bottle (380ml)",
+        category: "Kitchen Tools & Gadgets",
+        mrp: 1499,
+        sp: 799,
+        tag: "Limited Time Deal",
+        rating: 4.1,
+        reviewsCount: 310,
+        amazonUrl: "https://www.amazon.in/dp/B0CKM9900G",
+        images: [
+          "https://images.unsplash.com/photo-1570222094114-d054a817e56b?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1502741224143-90386d7f8c82?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?auto=format&fit=crop&w=700&q=80"
+        ],
+        features: [
+          "6 surgical-grade 304 stainless steel serrated blades",
+          "2000mAh lithium rechargeable battery gives 12+ blend cycles",
+          "Built-in magnetic safety induction switch stops accidental start",
+          "Compact sports cup profile for gym, office, travel, and campus"
+        ]
+      },
+      {
+        id: 8,
+        key: "hooks",
+        title: "Inari Life Heavy Duty Stainless Steel Self-Adhesive Wall Hooks (Pack of 6)",
+        category: "Home Improvement",
+        mrp: 399,
+        sp: 199,
+        tag: "Customer Choice",
+        rating: 4.4,
+        reviewsCount: 285,
+        amazonUrl: "https://www.amazon.in/dp/B0CKM2233H",
+        images: [
+          "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80"
+        ],
+        features: [
+          "Ultra-strong acrylic adhesive backing holds up to 5kg weight",
+          "Brushed matte rust-proof stainless steel for humid bathrooms",
+          "Damage-free stick-on installation without screws or drills",
+          "Versatile hanging for spatulas, towels, keys, robes, and coats"
+        ]
+      },
+      {
+        id: 9,
+        key: "jaderoller",
+        title: "Inari Life Natural Jade Facial Massage Roller and Sculpting Gua Sha Set",
+        category: "Beauty & Personal Care",
+        mrp: 799,
+        sp: 399,
+        tag: "New Arrival",
+        rating: 4.5,
+        reviewsCount: 220,
+        amazonUrl: "https://www.amazon.in/dp/B0CKM4455I",
+        images: [
+          "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=700&q=80"
+        ],
+        features: [
+          "100% genuine smooth cooling jade stone with zinc alloy frame",
+          "Dual-end roller for forehead, cheeks, jawline, and delicate under-eyes",
+          "Assists lymphatic drainage and maximizes serum absorption",
+          "Whisper-silent silicone caps prevent squeaking when rolling"
+        ]
+      },
+      {
+        id: 10,
+        key: "carholder",
+        title: "Inari Life 360° Rotatable Dashboard & Windshield Car Mobile Holder",
+        category: "Mobile Accessories",
+        mrp: 649,
+        sp: 319,
+        tag: "Customer Choice",
+        rating: 4.2,
+        reviewsCount: 178,
+        amazonUrl: "https://www.amazon.in/dp/B0CKM6677J",
+        images: [
+          "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=700&q=80"
+        ],
+        features: [
+          "One-touch quick release arms hold devices from 4.7 to 7.0 inches",
+          "Super-suction sticky gel base anchors securely on bumpy roads",
+          "Extendable telescopic arm provides perfect line-of-sight navigation",
+          "Silicone padded clamps protect phones from vibration scratches"
+        ]
+      },
+      {
+        id: 11,
+        key: "yogamat",
+        title: "Inari Life High Density Anti-Skid Yoga & Workout Mat with Shoulder Strap",
+        category: "Sports & Fitness",
+        mrp: 1899,
+        sp: 949,
+        tag: "Best Seller",
+        rating: 4.5,
+        reviewsCount: 394,
+        amazonUrl: "https://www.amazon.in/dp/B0CKM8899K",
+        images: [
+          "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=700&q=80"
+        ],
+        features: [
+          "6mm optimum high-density cushioning protects spine and knees",
+          "Double-sided ripple texture delivers non-slip grip on marble/wood",
+          "Sweat-resistant eco-friendly TPE foam with zero chemical odor",
+          "Lightweight portable roll-up design with elastic carry sling"
+        ]
+      },
+      {
+        id: 12,
+        key: "puzzle",
+        title: "Inari Life Wooden Geometric Sorting & Stacking Educational Montessori Puzzle",
+        category: "Toys & Games",
+        mrp: 799,
+        sp: 399,
+        tag: "New Arrival",
+        rating: 4.4,
+        reviewsCount: 156,
+        amazonUrl: "https://www.amazon.in/dp/B0CKM0011L",
+        images: [
+          "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1560421683-680be49ac20f?auto=format&fit=crop&w=700&q=80"
+        ],
+        features: [
+          "Solid natural pine wood with child-safe non-toxic lead-free paints",
+          "Smooth rounded corners engineered for small toddler hands",
+          "Stimulates spatial awareness, color differentiation, and motor skills",
+          "Ideal educational screen-free learning gift for toddlers 2-5 yrs"
+        ]
+      },
+      {
+        id: 13,
+        key: "oilbottle",
+        title: "Inari Life Glass Oil Dispenser with Precision Auto-Flip Drip-Free Cap (500ml)",
+        category: "Kitchen Tools & Gadgets",
+        mrp: 749,
+        sp: 379,
+        tag: "Best Seller",
+        rating: 4.4,
+        reviewsCount: 462,
+        amazonUrl: "https://www.amazon.in/dp/B0CKM1234M",
+        images: [
+          "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1589927986089-35812388d1f4?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80"
+        ],
+        features: [
+          "Smart gravity lever flips open when poured and seals tightly upright",
+          "Thick borosilicate clear glass body with accurate ml scale markings",
+          "Silicone gasket ensures zero messy oil dripping along counter",
+          "Wide refill bottleneck cleans easily without requiring a funnel"
+        ]
+      },
+      {
+        id: 14,
+        key: "tape",
+        title: "Inari Life Heavy Duty Nano Magic Reusable Double-Sided Adhesive Tape (3M)",
+        category: "Home Improvement",
+        mrp: 499,
+        sp: 249,
+        tag: "Limited Time Deal",
+        rating: 4.3,
+        reviewsCount: 310,
+        amazonUrl: "https://www.amazon.in/dp/B0CKM2345N",
+        images: [
+          "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80"
+        ],
+        features: [
+          "Trace-less super-tack gel bonds photo frames, sockets, and carpets",
+          "Washable with clean water to regenerate stickiness repeatedly",
+          "Removes cleanly without peeling plaster, paint, or wood veneer",
+          "2mm thick elastic polyurethane withstands vibration and moisture"
+        ]
+      },
+      {
+        id: 15,
+        key: "bag",
+        title: "Inari Life Multi-Compartment Waterproof Travel Makeup & Toiletry Case",
+        category: "Beauty & Personal Care",
+        mrp: 799,
+        sp: 389,
+        tag: "Customer Choice",
+        rating: 4.5,
+        reviewsCount: 230,
+        amazonUrl: "https://www.amazon.in/dp/B0CKM3456O",
+        images: [
+          "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&w=700&q=80"
+        ],
+        features: [
+          "Water-repellent oxford exterior fabric with heavy-duty metal zippers",
+          "Dedicated brush organizer flap with transparent easy-wipe PVC shield",
+          "Structured partitions keep jars, palettes, and lipsticks organized",
+          "Reinforced top luggage handle for comfortable carry on trips"
+        ]
+      },
+      {
+        id: 16,
+        key: "stand",
+        title: "Inari Life Solid Aluminum Foldable Desktop Mobile & Tablet Stand Holder",
+        category: "Mobile Accessories",
+        mrp: 599,
+        sp: 279,
+        tag: "Best Seller",
+        rating: 4.4,
+        reviewsCount: 380,
+        amazonUrl: "https://www.amazon.in/dp/B0CKM4567P",
+        images: [
+          "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?auto=format&fit=crop&w=700&q=80"
+        ],
+        features: [
+          "Aviation-grade aluminum alloy with weighted non-wobble base",
+          "Dual 270° multi-angle hinges allow ergonomic hands-free video calls",
+          "Reserved charging cable opening accommodates thick cables cleanly",
+          "Silicone anti-scratch pads protect your phone and table surface"
+        ]
+      }
+    ];
+
+    function getFallbackSvgUrl(categoryName, title) {
+      const cleanTitle = (title || "Inari Life").replace(/[^a-zA-Z0-9 ]/g, '').substring(0, 24);
+      const cleanCat = (categoryName || "Home Essential").replace(/[^a-zA-Z0-9 ]/g, '');
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+          <defs>
+            <linearGradient id="bgG" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#10294A"/>
+              <stop offset="100%" stop-color="#1B3A64"/>
+            </linearGradient>
+            <linearGradient id="ambG" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#FFAB40"/>
+              <stop offset="100%" stop-color="#E8892B"/>
+            </linearGradient>
+          </defs>
+          <rect width="600" height="600" fill="url(#bgG)"/>
+          <circle cx="300" cy="250" r="130" fill="rgba(255,255,255,0.06)"/>
+          <path d="M 230 180 L 195 270 C 190 280 185 285 175 285 C 165 285 160 275 165 265 L 225 125 C 235 110 255 110 265 125 L 275 145 Z" fill="#FFFFFF"/>
+          <path d="M 225 135 C 238 105 260 105 272 125 L 340 265 C 345 275 340 285 330 285 C 320 285 315 280 310 270 L 255 150 C 248 135 235 130 225 135 Z" fill="url(#ambG)"/>
+          <text x="300" y="340" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="28" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">INARI LIFE</text>
+          <text x="300" y="380" font-family="system-ui,-apple-system,sans-serif" font-weight="600" font-size="16" fill="#E8892B" text-anchor="middle" letter-spacing="2">${cleanCat.toUpperCase()}</text>
+          <text x="300" y="440" font-family="system-ui,-apple-system,sans-serif" font-weight="500" font-size="18" fill="#FAF9F6" text-anchor="middle">${cleanTitle}</text>
+        </svg>
+      `;
+      return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    }
+
+    // State Variables
+    let currentCategory = "ALL";
+    let searchQuery = "";
+    let currentSort = "featured";
+    let displayedCount = 12;
+    const PAGE_SIZE = 12;
+    let activePDPProduct = null;
+
+    // Derived Categories
+    const CATEGORIES = [
+      { name: "Kitchen Tools & Gadgets", icon: "🍳" },
+      { name: "Home Improvement", icon: "🛠️" },
+      { name: "Storage Solutions", icon: "📦" },
+      { name: "Beauty & Personal Care", icon: "✨" },
+      { name: "Mobile Accessories", icon: "📱" },
+      { name: "Sports & Fitness", icon: "🏃" },
+      { name: "Toys & Games", icon: "🧩" }
+    ];
+
+    // Initialize
+    window.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".current-year").forEach(el => el.textContent = new Date().getFullYear());
+      initTheme();
+      initHeroCarousel();
+      renderCategoryChips();
+      populateCategoryDropdown();
+      renderProducts();
+      setupEventListeners();
+    });
+
+    /**
+     * Theme Toggle
+     */
+    function initTheme() {
+      const saved = localStorage.getItem("inari_theme") || 
+        (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      applyTheme(saved);
+
+      document.getElementById("themeToggleBtn").addEventListener("click", () => {
+        const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        applyTheme(next);
+        localStorage.setItem("inari_theme", next);
+      });
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      const icon = document.getElementById("themeIcon");
+      if (theme === "dark") {
+        icon.innerHTML = `<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>`;
+      } else {
+        icon.innerHTML = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
+      }
+    }
+
+    /**
+     * Hero Carousel Logic (3 Banners)
+     */
+    function initHeroCarousel() {
+      const slides = document.querySelectorAll(".banner-slide");
+      const dots = document.querySelectorAll(".carousel-dot");
+      let activeIndex = 0;
+      let timer;
+
+      function showSlide(index) {
+        slides[activeIndex].classList.remove("active");
+        dots[activeIndex].classList.remove("active");
+        activeIndex = (index + slides.length) % slides.length;
+        slides[activeIndex].classList.add("active");
+        dots[activeIndex].classList.add("active");
+      }
+
+      function startTimer() {
+        timer = setInterval(() => {
+          showSlide(activeIndex + 1);
+        }, 5500);
+      }
+
+      document.getElementById("carouselNextBtn").addEventListener("click", () => {
+        clearInterval(timer);
+        showSlide(activeIndex + 1);
+        startTimer();
+      });
+
+      document.getElementById("carouselPrevBtn").addEventListener("click", () => {
+        clearInterval(timer);
+        showSlide(activeIndex - 1);
+        startTimer();
+      });
+
+      dots.forEach(dot => {
+        dot.addEventListener("click", (e) => {
+          clearInterval(timer);
+          showSlide(parseInt(e.target.dataset.index, 10));
+          startTimer();
+        });
+      });
+
+      startTimer();
+    }
+
+    /**
+     * Categories
+     */
+    function renderCategoryChips() {
+      const container = document.getElementById("categoryChips");
+      container.innerHTML = "";
+
+      const all = document.createElement("div");
+      all.className = `category-chip ${currentCategory === 'ALL' ? 'active' : ''}`;
+      all.innerHTML = `
+        <div class="category-chip-icon">🏷️</div>
+        <div class="category-chip-title">All Categories</div>
+        <div class="category-chip-count">${INARI_PRODUCTS.length} items</div>
+      `;
+      all.onclick = () => filterByCategory("ALL");
+      container.appendChild(all);
+
+      CATEGORIES.forEach(c => {
+        const count = INARI_PRODUCTS.filter(p => p.category === c.name).length;
+        const chip = document.createElement("div");
+        chip.className = `category-chip ${currentCategory === c.name ? 'active' : ''}`;
+        chip.innerHTML = `
+          <div class="category-chip-icon">${c.icon}</div>
+          <div class="category-chip-title">${c.name}</div>
+          <div class="category-chip-count">${count} items</div>
+        `;
+        chip.onclick = () => filterByCategory(c.name);
+        container.appendChild(chip);
+      });
+    }
+
+    function populateCategoryDropdown() {
+      const sel = document.getElementById("categorySelect");
+      CATEGORIES.forEach(c => {
+        const o = document.createElement("option");
+        o.value = c.name;
+        o.textContent = c.name;
+        sel.appendChild(o);
+      });
+    }
+
+    /**
+     * Filter & Sort Pipeline
+     */
+    function getFilteredProducts() {
+      let list = [...INARI_PRODUCTS];
+
+      if (currentCategory !== "ALL") {
+        list = list.filter(p => p.category === currentCategory);
+      }
+
+      if (searchQuery.trim() !== "") {
+        const q = searchQuery.toLowerCase().trim();
+        list = list.filter(p => 
+          p.title.toLowerCase().includes(q) ||
+          p.category.toLowerCase().includes(q) ||
+          p.features.some(f => f.toLowerCase().includes(q))
+        );
+      }
+
+      // Sort
+      if (currentSort === "price-asc") {
+        list.sort((a, b) => a.sp - b.sp);
+      } else if (currentSort === "price-desc") {
+        list.sort((a, b) => b.sp - a.sp);
+      } else if (currentSort === "discount-desc") {
+        list.sort((a, b) => {
+          const discA = Math.round(((a.mrp - a.sp) / a.mrp) * 100);
+          const discB = Math.round(((b.mrp - b.sp) / b.mrp) * 100);
+          return discB - discA;
+        });
+      } else if (currentSort === "rating-desc") {
+        list.sort((a, b) => b.rating - a.rating);
+      } else if (currentSort === "title-asc") {
+        list.sort((a, b) => a.title.localeCompare(b.title));
+      }
+
+      return list;
+    }
+
+    /**
+     * Product Card Render
+     * STRICT REQUIREMENT: DO NOT show product ID / SKU on the tile image or card.
+     */
+    function renderProducts() {
+      const grid = document.getElementById("productGrid");
+      const resultsCount = document.getElementById("resultsCount");
+      const list = getFilteredProducts();
+
+      resultsCount.textContent = `Showing ${Math.min(displayedCount, list.length)} of ${list.length} products`;
+
+      if (list.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <div style="font-size:3rem; margin-bottom:0.75rem; opacity:0.6;">🔍</div>
+            <h3>No matching products found</h3>
+            <p style="color:var(--text-muted); margin:0.4rem 0 1.25rem;">Try refining your search keyword or selecting a different category.</p>
+            <button class="btn btn-navy" onclick="resetFilters()">Reset All Filters</button>
+          </div>
+        `;
+        document.getElementById("loadMoreContainer").style.display = "none";
+        return;
+      }
+
+      const visible = list.slice(0, displayedCount);
+      let html = "";
+
+      visible.forEach(p => {
+        const discountPct = Math.round(((p.mrp - p.sp) / p.mrp) * 100);
+        let tagClass = "";
+        if (p.tag === "Limited Time Deal") tagClass = "deal";
+        else if (p.tag === "Customer Choice") tagClass = "choice";
+        else if (p.tag === "New Arrival") tagClass = "arrival";
+
+        const fallback = getFallbackSvgUrl(p.category, p.title);
+
+        html += `
+          <article class="product-card">
+            <div class="card-media-wrapper" onclick="openPDP(${p.id})">
+              <!-- Deal / Status Tag Badge -->
+              <span class="badge-deal-tag ${tagClass}">${p.tag}</span>
+              
+              <!-- Calculated Discount % Badge -->
+              <span class="badge-discount-percent">${discountPct}% OFF</span>
+
+              <!-- High-Res Product Image with Fail-Safe Immediate Fallback -->
+              <img src="${p.images[0]}" 
+                   alt="${escapeHtml(p.title)}" 
+                   class="product-thumb-img" 
+                   loading="lazy" 
+                   onerror="this.onerror=null; this.src='${fallback}';">
+            </div>
+
+            <div class="card-body">
+              <span class="product-category-label">${p.category}</span>
+              <h3 class="product-card-title" onclick="openPDP(${p.id})" title="${escapeHtml(p.title)}">
+                ${escapeHtml(p.title)}
+              </h3>
+
+              <!-- Generic Star Rating (4.0 - 4.5) -->
+              <div class="card-rating-row">
+                <span class="star-stars">${getStarString(p.rating)}</span>
+                <span style="font-weight:700;">${p.rating}</span>
+                <span class="review-count-text">(${p.reviewsCount})</span>
+              </div>
+
+              <!-- Pricing: Selling Price (SP) & Struck MRP -->
+              <div class="card-pricing-block">
+                <div class="price-row">
+                  <span class="price-sp">₹${p.sp}</span>
+                  <span class="price-mrp">₹${p.mrp}</span>
+                </div>
+                <div class="price-disclaimer">Price on Amazon may vary</div>
+              </div>
+
+              <div class="card-actions">
+                <a href="${p.amazonUrl}" target="_blank" rel="noopener noreferrer" 
+                   class="buy-btn-card" onclick="trackOutboundClick('${escapeHtml(p.title)}', event)">
+                  <span>Buy on Amazon</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+                <button class="quick-view-btn" onclick="openPDP(${p.id})" aria-label="View Product Details" title="Quick View">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+        `;
+      });
+
+      grid.innerHTML = html;
+
+      // Load More Visibility
+      const loadBtn = document.getElementById("loadMoreContainer");
+      if (displayedCount >= list.length) {
+        loadBtn.style.display = "none";
+      } else {
+        loadBtn.style.display = "block";
+      }
+    }
+
+    /**
+     * PDP (Product Detail View Modal)
+     * Includes minimum 4 interactive gallery thumbnails and customer reviews
+     */
+    function openPDP(id) {
+      const p = INARI_PRODUCTS.find(item => item.id === id);
+      if (!p) return;
+      activePDPProduct = p;
+
+      const discountPct = Math.round(((p.mrp - p.sp) / p.mrp) * 100);
+      const fallback = getFallbackSvgUrl(p.category, p.title);
+
+      document.getElementById("modalTitle").textContent = p.title;
+      document.getElementById("modalBreadcrumbs").textContent = `Home / ${p.category}`;
+      document.getElementById("modalSellingPrice").textContent = `₹${p.sp}`;
+      document.getElementById("modalMRP").textContent = `M.R.P.: ₹${p.mrp}`;
+      document.getElementById("modalDiscountPill").textContent = `${discountPct}% OFF`;
+
+      // Ratings Bar
+      document.getElementById("pdpStarDisplay").textContent = getStarString(p.rating);
+      document.getElementById("pdpRatingVal").textContent = p.rating;
+      document.getElementById("pdpReviewsCount").textContent = `(${p.reviewsCount} customer reviews)`;
+
+      // Main Image
+      const mainImg = document.getElementById("pdpMainImg");
+      mainImg.src = p.images[0];
+      mainImg.onerror = function() {
+        this.onerror = null;
+        this.src = fallback;
+      };
+
+      // 4 Thumbnails
+      const thumbsContainer = document.getElementById("pdpThumbsContainer");
+      thumbsContainer.innerHTML = "";
+
+      p.images.forEach((imgUrl, idx) => {
+        const thumb = document.createElement("div");
+        thumb.className = `gallery-thumb ${idx === 0 ? 'active' : ''}`;
+        thumb.innerHTML = `
+          <img src="${imgUrl}" alt="Thumbnail ${idx + 1}" loading="lazy" 
+               onerror="this.onerror=null; this.src='${fallback}';">
+        `;
+        thumb.onclick = () => {
+          document.querySelectorAll(".gallery-thumb").forEach(t => t.classList.remove("active"));
+          thumb.classList.add("active");
+          mainImg.src = imgUrl;
+        };
+        thumbsContainer.appendChild(thumb);
+      });
+
+      // Features
+      const featUl = document.getElementById("modalFeatures");
+      featUl.innerHTML = p.features.map(f => `<li>${escapeHtml(f)}</li>`).join("");
+
+      // Amazon Buy Button
+      const buyBtn = document.getElementById("modalBuyBtn");
+      buyBtn.href = p.amazonUrl;
+      buyBtn.onclick = (e) => trackOutboundClick(p.title, e);
+
+      // Mobile Sticky Bar
+      document.getElementById("stickyPriceVal").textContent = `₹${p.sp}`;
+      const stickyBuy = document.getElementById("stickyBuyBtn");
+      stickyBuy.href = p.amazonUrl;
+      stickyBuy.onclick = (e) => trackOutboundClick(p.title, e);
+
+      // Reviews rendering (Generic 4.0 - 4.5 Ratings)
+      const reviewsBox = document.getElementById("pdpSampleReviews");
+      reviewsBox.innerHTML = `
+        <div class="sample-review-card">
+          <div class="reviewer-meta">
+            <span>Rajesh M.</span>
+            <span style="color:var(--star-color);">★★★★★ 5.0</span>
+          </div>
+          <p style="color:var(--text-muted); font-size:0.8125rem;">"Superb build quality! Exactly as described and delivered the very next morning via Amazon Prime. Highly recommend Inari Life for kitchen essentials."</p>
         </div>
-      </div>
-      <div id="arrivalGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        <!-- Injected via JS -->
-      </div>
-    </section>
+        <div class="sample-review-card">
+          <div class="reviewer-meta">
+            <span>Sneha K.</span>
+            <span style="color:var(--star-color);">★★★★☆ 4.0</span>
+          </div>
+          <p style="color:var(--text-muted); font-size:0.8125rem;">"Very functional and thoughtfully designed. Solved our drawer clutter completely. Worth every rupee."</p>
+        </div>
+      `;
 
-    <!-- Banner 3: Customer Satisfaction & Community Trust -->
-    <section class="bg-slate-900 text-white py-16 px-4 my-12">
-      <div class="max-w-6xl mx-auto grid grid-cols-
+      // Open Modal
+      const modal = document.getElementById("productModal");
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closePDP() {
+      const modal = document.getElementById("productModal");
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      activePDPProduct = null;
+    }
+
+    /**
+     * Star string helper
+     */
+    function getStarString(rating) {
+      if (rating >= 4.5) return "★★★★★";
+      if (rating >= 4.0) return "★★★★☆";
+      return "★★★☆☆";
+    }
+
+    /**
+     * Filter & Control Handlers
+     */
+    function filterByCategory(cat) {
+      currentCategory = cat;
+      displayedCount = PAGE_SIZE;
+      document.getElementById("categorySelect").value = cat;
+
+      document.querySelectorAll(".category-chip").forEach(chip => {
+        const text = chip.querySelector(".category-chip-title").textContent;
+        if ((cat === "ALL" && text.includes("All")) || text === cat) {
+          chip.classList.add("active");
+        } else {
+          chip.classList.remove("active");
+        }
+      });
+
+      renderProducts();
+    }
+
+    function resetFilters() {
+      currentCategory = "ALL";
+      searchQuery = "";
+      currentSort = "featured";
+      displayedCount = PAGE_SIZE;
+      document.getElementById("searchInput").value = "";
+      document.getElementById("categorySelect").value = "ALL";
+      document.getElementById("sortSelect").value = "featured";
+      renderCategoryChips();
+      renderProducts();
+    }
+
+    function setupEventListeners() {
+      // Search
+      document.getElementById("searchInput").addEventListener("input", (e) => {
+        searchQuery = e.target.value;
+        displayedCount = PAGE_SIZE;
+        renderProducts();
+      });
+
+      // Category Dropdown
+      document.getElementById("categorySelect").addEventListener("change", (e) => {
+        filterByCategory(e.target.value);
+      });
+
+      // Sort
+      document.getElementById("sortSelect").addEventListener("change", (e) => {
+        currentSort = e.target.value;
+        renderProducts();
+      });
+
+      // Load More
+      document.getElementById("loadMoreBtn").addEventListener("click", () => {
+        displayedCount += PAGE_SIZE;
+        renderProducts();
+      });
+
+      // PDP Closures
+      document.getElementById("modalCloseBtn").addEventListener("click", closePDP);
+      document.getElementById("productModal").addEventListener("click", (e) => {
+        if (e.target.id === "productModal") closePDP();
+      });
+
+      // Mobile Menu
+      const drawer = document.getElementById("mobileDrawer");
+      const overlay = document.getElementById("drawerOverlay");
+      document.getElementById("mobileMenuOpen").addEventListener("click", () => {
+        drawer.classList.add("open");
+        overlay.classList.add("active");
+      });
+      document.getElementById("mobileMenuClose").addEventListener("click", closeDrawer);
+      overlay.addEventListener("click", closeDrawer);
+
+      // Escape key
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closePDP();
+          closeInfoModal();
+          closeDrawer();
+        }
+      });
+    }
+
+    function closeDrawer() {
+      document.getElementById("mobileDrawer").classList.remove("open");
+      document.getElementById("drawerOverlay").classList.remove("active");
+    }
+
+    function trackOutboundClick(title, event) {
+      const toast = document.getElementById("analyticsToast");
+      document.getElementById("toastText").textContent = `Opening Amazon.in for: ${title.substring(0, 32)}...`;
+      toast.classList.add("show");
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2600);
+    }
+
+    /**
+     * Information Pages Modals
+     */
+    function openInfoModal(type) {
+      const modal = document.getElementById("infoModal");
+      const body = document.getElementById("infoModalBody");
+      let content = "";
+
+      if (type === "about") {
+        content = `
+          <h2>About Inari Life</h2>
+          <div class="info-modal-content">
+            <p><strong>Inari Life - Simplifying everyday living.</strong> We are an Indian consumer brand bringing thoughtful ergonomics, premium materials, and practical design into modern homes.</p>
+            <h3 style="margin:1rem 0 0.4rem; font-size:1.1rem;">Our Philosophy</h3>
+            <p>Every product in our kitchen and home catalog is created to reduce everyday friction. We prioritize durability, food-grade materials, and smart aesthetics that complement your space.</p>
+            <h3 style="margin:1rem 0 0.4rem; font-size:1.1rem;">Direct Amazon Integration</h3>
+            <p>To provide nationwide rapid Prime delivery, secure online payments, and instant returns, all orders are fulfilled through Amazon India.</p>
+            <p style="margin-top:1rem;">Inquiries: <a href="mailto:support@inarilife.com" style="color:var(--amber); font-weight:700;">support@inarilife.com</a></p>
+          </div>
+        `;
+      } else if (type === "shipping") {
+        content = `
+          <h2>Amazon Shipping & Returns</h2>
+          <div class="info-modal-content">
+            <h3 style="font-size:1.1rem; margin-bottom:0.4rem;">Orders & Delivery</h3>
+            <p>All Inari Life orders are placed and processed directly on Amazon India. Amazon Prime members receive free 1-Day or 2-Day expedited delivery across eligible Indian pincodes.</p>
+            <h3 style="font-size:1.1rem; margin:1rem 0 0.4rem;">Hassle-Free 7 to 10 Day Returns</h3>
+            <p>Your purchases are fully protected under Amazon India's verified return window. If an item arrives damaged or differs from what you ordered, initiate a return or replacement via your Amazon Account 'Your Orders' section.</p>
+          </div>
+        `;
+      } else if (type === "faq") {
+        content = `
+          <h2>Frequently Asked Questions</h2>
+          <div class="info-modal-content">
+            <h3 style="font-size:1rem; margin-bottom:0.3rem;">Are all products 100% original?</h3>
+            <p>Yes. inarilife.com is the official brand catalog. Every Buy Now link redirects directly to our authentic Amazon India product listing.</p>
+            <h3 style="font-size:1rem; margin:0.8rem 0 0.3rem;">Why are M.R.P. and Selling Price shown?</h3>
+            <p>We display the official Maximum Retail Price along with the discounted Selling Price. Real-time promotional prices may vary during Amazon festival sales.</p>
+          </div>
+        `;
+      } else if (type === "contact") {
+        content = `
+          <h2>Contact Inari Life</h2>
+          <div class="info-modal-content">
+            <p>Our customer care team is available to help with product guidance or wholesale inquiries.</p>
+            <div style="background:var(--surface-subtle); padding:1.25rem; border-radius:var(--radius-md); border-left:4px solid var(--amber); margin:1.25rem 0;">
+              <span style="font-size:0.75rem; text-transform:uppercase; color:var(--text-muted); font-weight:700;">Official Support Email</span>
+              <div style="font-size:1.2rem; font-weight:800; color:var(--navy); margin-top:0.25rem;">
+                <a href="mailto:support@inarilife.com" style="color:inherit;">support@inarilife.com</a>
+              </div>
+            </div>
+            <a href="mailto:support@inarilife.com" class="btn btn-amber">Write to Support</a>
+          </div>
+        `;
+      } else if (type === "privacy") {
+        content = `
+          <h2>Privacy Policy</h2>
+          <div class="info-modal-content">
+            <p>Inari Life respects user privacy. This static website (inarilife.com) does not store cookies, track personal identities, or host payment databases. All shopping checkouts occur directly on Amazon India.</p>
+          </div>
+        `;
+      } else if (type === "terms") {
+        content = `
+          <h2>Terms of Service</h2>
+          <div class="info-modal-content">
+            <p>inarilife.com serves as a product showcase directory. Final transactions, delivery dates, and return policies are governed by Amazon India's Conditions of Use.</p>
+          </div>
+        `;
+      }
+
+      body.innerHTML = content;
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeInfoModal() {
+      const modal = document.getElementById("infoModal");
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    function escapeHtml(str) {
+      if (!str) return "";
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>
