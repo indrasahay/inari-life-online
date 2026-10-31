@@ -1326,6 +1326,10 @@
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
+        <!-- Amazon Link Mode Toggle: Fixes 404 'Looking for something' error -->
+        <button class="theme-toggle" id="linkModeBtn" aria-label="Toggle Amazon Link Mode" title="Toggle between Active Search and Direct ASIN link" style="width:auto; padding:0 0.75rem; font-size:0.75rem; font-weight:700; gap:0.35rem; display:flex;">
+          <span style="color:var(--amber);">●</span> <span id="linkModeLabel">Working Link Mode</span>
+        </button>
         <!-- Owner Quick Sync Excel Button -->
         <button class="theme-toggle" id="uploadExcelBtn" aria-label="Sync Excel Catalog" title="Update products from Excel file">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1680,20 +1684,54 @@
   <!-- Script Architecture -->
   <script>
     /**
-     * Robust Amazon Link Sanitizer & Validator
-     * - Strips broken tracking tokens, session IDs, and trailing garbage.
-     * - Fixes malformed DP/ASIN links that cause Amazon's "dogs of Amazon" 404 page.
-     * - If no valid direct link is present, constructs a guaranteed-to-work Amazon search link.
+     * Amazon Link Resolver: Solves the "Looking for something?" 404 Error
+     * 
+     * Why Amazon shows:
+     * "Looking for something? We're sorry. The Web address you entered is not a functioning page on our site."
+     * 
+     * Reason: ASINs like 'B0HPSVNTP7' in newly generated Amazon seller draft sheets
+     * are NOT yet indexed or active on public Amazon.in servers. Direct /dp/ links for non-live ASINs
+     * immediately return Amazon's 404 dog error page.
+     * 
+     * Resolution:
+     * When linkMode is 'safe' (default), we construct a clean Amazon.in search query with the product title.
+     * This ALWAYS returns an active, live shopping page on Amazon.in with zero broken pages.
+     * If the owner switches linkMode to 'direct', it will use the direct /dp/ ASIN link once the listings are published.
      */
-    function sanitizeAmazonUrl(rawUrl, fallbackTitle = "") {
-      if (!rawUrl || typeof rawUrl !== "string") {
-        if (fallbackTitle) {
-          return `https://www.amazon.in/s?k=${encodeURIComponent(fallbackTitle)}`;
+    let amazonLinkMode = localStorage.getItem("inari_link_mode") || "safe"; // 'safe' (search fallback) or 'direct' (/dp/ link)
+
+    function getWorkingAmazonUrl(product) {
+      if (!product) return "https://www.amazon.in";
+
+      const rawUrl = product.amazonUrl || "";
+      const title = product.title || "";
+
+      // If user selected Direct ASIN mode and a rawUrl exists
+      if (amazonLinkMode === "direct" && rawUrl && rawUrl !== "#" && !rawUrl.toLowerCase().includes("coming soon")) {
+        const cleanUrl = rawUrl.trim();
+        if (cleanUrl.startsWith("http://") || cleanUrl.startsWith("https://")) {
+          return cleanUrl;
         }
-        return null;
+        return `https://${cleanUrl}`;
       }
 
-      let trimmed = rawUrl.trim();
+      // Safe mode: Constructs a guaranteed working Amazon India search link so you NEVER get the 404 page
+      const cleanKeyword = title
+        .replace(/INARI LIFE/gi, "")
+        .replace(/–|-|\|/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+        .split(" ")
+        .slice(0, 6)
+        .join(" ");
+
+      return `https://www.amazon.in/s?k=${encodeURIComponent(cleanKeyword + " Inari Life")}`;
+    }
+
+    function sanitizeAmazonUrl(rawUrl, fallbackTitle = "") {
+      if (!rawUrl && !fallbackTitle) return null;
+
+      let trimmed = (rawUrl || "").trim();
       if (!trimmed || trimmed === "#" || trimmed.toLowerCase() === "coming soon" || trimmed.toLowerCase() === "na") {
         if (fallbackTitle) {
           return `https://www.amazon.in/s?k=${encodeURIComponent(fallbackTitle)}`;
@@ -2370,18 +2408,14 @@
         else if (p.tag === "New Arrival") tagClass = "arrival";
 
         const fallback = getFallbackSvgUrl(p.category, p.title);
-        const validAmazonUrl = sanitizeAmazonUrl(p.amazonUrl, p.title);
+        const validAmazonUrl = getWorkingAmazonUrl(p);
 
-        const buyButtonHtml = validAmazonUrl ? `
+        const buyButtonHtml = `
           <a href="${validAmazonUrl}" target="_blank" rel="noopener noreferrer" 
              class="buy-btn-card" onclick="trackOutboundClick('${escapeHtml(p.title)}', event)">
             <span>Buy on Amazon</span>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </a>
-        ` : `
-          <button class="buy-btn-card btn-disabled" disabled title="Coming soon on Amazon">
-            <span>Coming soon</span>
-          </button>
         `;
 
         html += `
@@ -2501,32 +2535,20 @@
       // Amazon Buy Button
       const buyBtn = document.getElementById("modalBuyBtn");
       const stickyBuy = document.getElementById("stickyBuyBtn");
-      const validAmazonUrl = sanitizeAmazonUrl(p.amazonUrl, p.title);
+      const validAmazonUrl = getWorkingAmazonUrl(p);
 
-      if (validAmazonUrl) {
-        buyBtn.href = validAmazonUrl;
-        buyBtn.classList.remove("btn-disabled");
-        buyBtn.innerHTML = `
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/></svg>
-          Buy Now on Amazon India
-        `;
-        buyBtn.onclick = (e) => trackOutboundClick(p.title, e);
+      buyBtn.href = validAmazonUrl;
+      buyBtn.classList.remove("btn-disabled");
+      buyBtn.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/></svg>
+        Buy Now on Amazon India
+      `;
+      buyBtn.onclick = (e) => trackOutboundClick(p.title, e);
 
-        stickyBuy.href = validAmazonUrl;
-        stickyBuy.classList.remove("btn-disabled");
-        stickyBuy.textContent = "Buy on Amazon";
-        stickyBuy.onclick = (e) => trackOutboundClick(p.title, e);
-      } else {
-        buyBtn.removeAttribute("href");
-        buyBtn.classList.add("btn-disabled");
-        buyBtn.innerHTML = `Coming soon on Amazon`;
-        buyBtn.onclick = (e) => e.preventDefault();
-
-        stickyBuy.removeAttribute("href");
-        stickyBuy.classList.add("btn-disabled");
-        stickyBuy.textContent = "Coming soon";
-        stickyBuy.onclick = (e) => e.preventDefault();
-      }
+      stickyBuy.href = validAmazonUrl;
+      stickyBuy.classList.remove("btn-disabled");
+      stickyBuy.textContent = "Buy on Amazon";
+      stickyBuy.onclick = (e) => trackOutboundClick(p.title, e);
 
       // Mobile Sticky Bar
       document.getElementById("stickyPriceVal").textContent = `₹${p.sp}`;
@@ -2607,6 +2629,35 @@
     }
 
     function setupEventListeners() {
+      // Link Mode Toggle (Switches between Guaranteed Working Search and Direct ASIN link)
+      const linkModeBtn = document.getElementById("linkModeBtn");
+      const linkModeLabel = document.getElementById("linkModeLabel");
+
+      function updateLinkModeUI() {
+        if (amazonLinkMode === "safe") {
+          linkModeLabel.textContent = "Safe Links (No 404)";
+          linkModeBtn.title = "Currently using safe Amazon search to prevent 404 errors. Click to switch to direct ASIN draft links.";
+        } else {
+          linkModeLabel.textContent = "Direct ASIN Mode";
+          linkModeBtn.title = "Currently linking directly to /dp/ASIN. Click to switch back to safe search mode.";
+        }
+      }
+      updateLinkModeUI();
+
+      linkModeBtn.addEventListener("click", () => {
+        amazonLinkMode = amazonLinkMode === "safe" ? "direct" : "safe";
+        localStorage.setItem("inari_link_mode", amazonLinkMode);
+        updateLinkModeUI();
+        renderProducts();
+
+        const toast = document.getElementById("analyticsToast");
+        document.getElementById("toastText").textContent = amazonLinkMode === "safe" 
+          ? "Switched to Safe Working Links (100% active Amazon pages)" 
+          : "Switched to Direct ASIN links (from Excel)";
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 2800);
+      });
+
       // Search
       document.getElementById("searchInput").addEventListener("input", (e) => {
         searchQuery = e.target.value;
